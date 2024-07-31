@@ -8,6 +8,8 @@
   <artifactId>spring-boot-demo</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <modules>
+    <module>a-common-utils</module>
+    <module>a-test</module>
     <module>demo-helloworld</module>
     <module>demo-properties</module>
     <module>demo-actuator</module>
