@@ -73,14 +73,16 @@ public class HikariCPExample {
     public static void main(String[] args) {
         // 配置 HikariCP 连接池
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3307/diagnose_analyse?passwordCharacterEncoding=latin1&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&connectTimeout=10000&socketTimeout=600000");
-        config.setUsername("app1");
-        config.setPassword("Ux2dUre#RBeD");
+        config.setJdbcUrl("jdbc:mysql://localhost:3307/test?passwordCharacterEncoding=latin1&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&connectTimeout=10000&socketTimeout=600000");
+        config.setUsername("root");
+        config.setPassword("982003834");
         config.setMaximumPoolSize(10);
         config.setMinimumIdle(5);
         config.setIdleTimeout(30000);
         config.setConnectionTimeout(5000);
+        config.setMaxLifetime(1800000);
+        config.setKeepaliveTime(90000);
 
-        connectionDemo2(config);
+        connectionDemo1(config);
     }
 }
