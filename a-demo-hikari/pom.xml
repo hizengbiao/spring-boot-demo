@@ -55,6 +55,7 @@
       <version>4.0.3</version>
     </dependency>
 
+    <!--  actuator相关  -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
@@ -63,6 +64,10 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
+    <dependency>
+    <groupId>org.jolokia</groupId>
+    <artifactId>jolokia-core</artifactId>
+  </dependency>
 
   </dependencies>
 
