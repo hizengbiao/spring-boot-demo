@@ -9,7 +9,9 @@
   <version>1.0.0-SNAPSHOT</version>
   <modules>
     <module>a-common-utils</module>
+    <module>a-demo-tomcat</module>
     <module>a-test</module>
+    <module>a-demo-hikari</module>
     <module>demo-helloworld</module>
     <module>demo-properties</module>
     <module>demo-actuator</module>
@@ -72,7 +74,6 @@
     <module>demo-https</module>
     <module>demo-flyway</module>
     <module>demo-pay</module>
-    <module>a-demo-tomcat</module>
   </modules>
   <packaging>pom</packaging>
 

@@ -16,7 +16,7 @@ spring:
     db-history-used: true
 
 server:
-  port: 8081
+  port: 8083
 
 #custom:
 #  simulateDeadlock: false
