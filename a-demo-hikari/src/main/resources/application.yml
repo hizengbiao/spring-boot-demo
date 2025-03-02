@@ -5,6 +5,7 @@ server:
 spring:
   profiles:
     active: taiwindows
+#    active: taiubuntu
   security:
     user:
       name: admin
