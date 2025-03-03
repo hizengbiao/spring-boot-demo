@@ -6,7 +6,8 @@ spring:
   profiles:
 #    active: taiwindows
 #    active: taiubuntu
-    active: laptopubuntu
+#    active: laptopubuntu
+    active: laptopwindows
 #  security:
 #    user:
 #      name: admin
