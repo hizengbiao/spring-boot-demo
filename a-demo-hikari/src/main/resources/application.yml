@@ -4,33 +4,34 @@ server:
     context-path: /hikari-demo
 spring:
   profiles:
-    active: taiwindows
+#    active: taiwindows
 #    active: taiubuntu
-  security:
-    user:
-      name: admin
-      password: admin
-      roles: ADMIN
+    active: laptopubuntu
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+#      roles: ADMIN
 
 # 通过 JMX 或 Actuator 监控连接池：
 # 访问 http://localhost:8081/high/mtcs/hikaricp.connections.active 查看活跃连接数
-management:
-  metrics:
-    enable:
-      hikari: true        # 启用 HikariCP 指标收集
-  endpoint:
-    health:
-      show-components: when_authorized
-  endpoints:
-    web:
-      base-path: /high
-      path-mapping:
-        health: heal
-        metrics: mtcs
-        datasource: ds
-      exposure:
-        include: jolokia,health,metrics,datasource
-#        include: "*"
+#management:
+#  metrics:
+#    enable:
+#      hikari: true        # 启用 HikariCP 指标收集
+#  endpoint:
+#    health:
+#      show-components: when_authorized
+#  endpoints:
+#    web:
+#      base-path: /high
+#      path-mapping:
+#        health: heal
+#        metrics: mtcs
+#        datasource: ds
+#      exposure:
+#        include: jolokia,health,metrics,datasource
+##        include: "*"
 
 
 zb.hikari.maximum-pool-size: 10
