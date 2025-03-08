@@ -12,6 +12,7 @@ server:
     context-path: /hikari-demo
 spring:
   datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${zb.hikari.jdbc-url}
     username: ${zb.hikari.username}
     password: ${zb.hikari.password}
@@ -54,3 +55,9 @@ spring:
 ##        include: "*"
 
 
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 自动驼峰转换
+  global-config:
+    db-config:
+      logic-delete-field: deleted  # 逻辑删除字段（可选）
