@@ -18,3 +18,42 @@
 zb.hikari.jdbc-url: jdbc:mysql://localhost:3307/test?passwordCharacterEncoding=latin1&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&connectTimeout=10000&socketTimeout=600000&allowPublicKeyRetrieval=true
 zb.hikari.username: root
 zb.hikari.password: 982003834
+
+
+
+
+#bee:
+#  persistence:
+#    app_diagnose1:
+#      datasource:
+#        isPrimary: true
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driverClassName: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://99.17.207.154:3307/test?passwordCharacterEncoding=latin1&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&connectTimeout=10000&socketTimeout=600000&allowPublicKeyRetrieval=true
+#        username: zb
+#        password: 982003834
+#        maximum-pool-size: 10
+#        minimum-idle: 1
+#        idle-timeout: 30000
+#        connection-timeout: 5000
+#        max-lifetime: 1800000
+#        keepalive-time: 90000
+#      mybatis:
+#        config-location: classpath:mybatis-config.xml
+#        mapper-locations: classpath:mybatis/mapper/*.xml
+#    app_diagnose3:
+#      datasource:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driverClassName: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://99.17.207.154:3307/test?passwordCharacterEncoding=latin1&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&connectTimeout=10000&socketTimeout=600000&allowPublicKeyRetrieval=true
+#        username: zb
+#        password: 982003834
+#        maximum-pool-size: 10
+#        minimum-idle: 1
+#        idle-timeout: 30000
+#        connection-timeout: 5000
+#        max-lifetime: 1800000
+#        keepalive-time: 90000
+#      mybatis:
+#        config-location: classpath:mybatis-config.xml
+#        mapper-locations: classpath:mybatis/mapper/*.xml
