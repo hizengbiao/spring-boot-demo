@@ -1,8 +1,27 @@
+
+zb.hikari.maximum-pool-size: 10
+zb.hikari.minimum-idle: 5
+zb.hikari.idle-timeout: 30000
+zb.hikari.connection-timeout: 5000
+zb.hikari.max-lifetime: 1800000
+zb.hikari.keepalive-time: 90000
+
 server:
   port: 8086
   servlet:
     context-path: /hikari-demo
 spring:
+  datasource:
+    url: ${zb.hikari.jdbc-url}
+    username: ${zb.hikari.username}
+    password: ${zb.hikari.password}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 5000
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      keepalive-time: 90000
   profiles:
     active: taiwindows
 #    active: taiubuntu
@@ -35,9 +54,3 @@ spring:
 ##        include: "*"
 
 
-zb.hikari.maximum-pool-size: 10
-zb.hikari.minimum-idle: 5
-zb.hikari.idle-timeout: 30000
-zb.hikari.connection-timeout: 5000
-zb.hikari.max-lifetime: 1800000
-zb.hikari.keepalive-time: 90000
