@@ -34,7 +34,7 @@ public class HikariCPSysCallService {
     private MyHikariConfig myHikariConfig;
 
     @Autowired
-    @Qualifier("myHikariDataSource")
+//    @Qualifier("myHikariDataSource")
     private DataSource dataSource;
 
     public String getNewConnection() {

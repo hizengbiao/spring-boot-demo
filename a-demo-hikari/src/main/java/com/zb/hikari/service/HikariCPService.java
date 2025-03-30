@@ -17,7 +17,7 @@ public class HikariCPService {
     private static final String TEST_SQL_SLOW = "SELECT SLEEP(?)";
 
     @Autowired
-    @Qualifier("myHikariDataSource")
+//    @Qualifier("myHikariDataSource")
     private DataSource dataSource;
 
     public String connectionDemo1(Integer id) {
