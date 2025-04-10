@@ -11,49 +11,86 @@ server:
   servlet:
     context-path: /hikari-demo
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${zb.hikari.jdbc-url}
-    username: ${zb.hikari.username}
-    password: ${zb.hikari.password}
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
-      connection-timeout: 5000
-      idle-timeout: 30000
-      max-lifetime: 1800000
-      keepalive-time: 90000
   profiles:
     active: taiwindows
-#    active: taiubuntu
-#    active: laptopubuntu
-#    active: laptopwindows
-#  security:
-#    user:
-#      name: admin
-#      password: admin
-#      roles: ADMIN
+  #    active: taiubuntu
+  #    active: laptopubuntu
+  #    active: laptopwindows
+  # 禁用默认数据源自动配置
+#  autoconfigure:
+#    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    dynamic:
+      primary: tomcat #默认数据源
+      datasource:
+        tomcat: # Tomcat-JDBC 数据源配置
+          type: org.apache.tomcat.jdbc.pool.DataSource
+          url: ${zb.hikari.jdbc-url}
+#          url: jdbc:mysql://localhost:3307/test2?useSSL=false&serverTimezone=UTC
+          username: ${zb.hikari.username}
+          password: ${zb.hikari.password}
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          initial-size: 1
+          max-active: 5
+          min-idle: 1
+          max-idle: 3
+          test-on-borrow: true
+          validation-query: SELECT 1
+        hikari: # HikariCP 数据源配置
+          type: com.zaxxer.hikari.HikariDataSource
+          url: ${zb.hikari.jdbc-url}
+          username: ${zb.hikari.username}
+          password: ${zb.hikari.password}
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          pool-name: HikariPool
+          maximum-pool-size: 5
+          minimum-idle: 2
+          idle-timeout: 30000
+          connection-timeout: 30000
+          max-lifetime: 1800000
+        druid: # Druid 数据源配置
+          type: com.alibaba.druid.pool.DruidDataSource
+          url: ${zb.hikari.jdbc-url}
+          username: ${zb.hikari.username}
+          password: ${zb.hikari.password}
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          initial-size: 1
+          max-active: 4
+          min-idle: 2
+          max-wait: 60000
+          validation-query: SELECT 1
+          test-on-borrow: true
+          test-while-idle: true
+          time-between-eviction-runs-millis: 60000
 
-# 通过 JMX 或 Actuator 监控连接池：
-# 访问 http://localhost:8081/high/mtcs/hikaricp.connections.active 查看活跃连接数
-#management:
-#  metrics:
-#    enable:
-#      hikari: true        # 启用 HikariCP 指标收集
-#  endpoint:
-#    health:
-#      show-components: when_authorized
-#  endpoints:
-#    web:
-#      base-path: /high
-#      path-mapping:
-#        health: heal
-#        metrics: mtcs
-#        datasource: ds
-#      exposure:
-#        include: jolokia,health,metrics,datasource
-##        include: "*"
 
+#
+#tomcat:
+#  datasource:
+#    url: ${zb.hikari.jdbc-url}
+#    username: ${zb.hikari.username}
+#    password: ${zb.hikari.password}
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    initial-size: 1
+#    max-active: 5
+#    min-idle: 1
+#    max-idle: 3
+#    test-on-borrow: true
+#    validation-query: SELECT 1
+
+
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: ${zb.hikari.jdbc-url}
+#    username: ${zb.hikari.username}
+#    password: ${zb.hikari.password}
+#    hikari:
+#      maximum-pool-size: 10
+#      minimum-idle: 5
+#      connection-timeout: 5000
+#      idle-timeout: 30000
+#      max-lifetime: 1800000
+#      keepalive-time: 90000
 
 mybatis-plus:
   configuration:
@@ -61,3 +98,35 @@ mybatis-plus:
   global-config:
     db-config:
       logic-delete-field: deleted  # 逻辑删除字段（可选）
+
+#
+## HikariCP 数据源配置
+#hikari:
+#  datasource:
+#    jdbc-url: ${zb.hikari.jdbc-url}
+#    username: ${zb.hikari.username}
+#    password: ${zb.hikari.password}
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    pool-name: HikariPool
+#    maximum-pool-size: 5
+#    minimum-idle: 2
+#    idle-timeout: 30000
+#    connection-timeout: 30000
+#    max-lifetime: 1800000
+#
+## Druid 数据源配置
+#druid:
+#  datasource:
+#    url: ${zb.hikari.jdbc-url}
+#    username: ${zb.hikari.username}
+#    password: ${zb.hikari.password}
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    initial-size: 1
+#    max-active: 4
+#    min-idle: 2
+#    max-wait: 60000
+#    validation-query: SELECT 1
+#    test-on-borrow: true
+#    test-while-idle: true
+#    time-between-eviction-runs-millis: 60000
+

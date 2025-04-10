@@ -1,8 +1,8 @@
 package com.zb.hikari.service;
 
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -12,13 +12,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Service
-public class HikariCPService {
+@DS("druid")  // 直接使用datasource需要把DS注解放在方法上（放在类上数据源未生效）
+public class DynamicDsService {
     private static final String TEST_SQL = "SELECT * FROM book WHERE id =?";
     private static final String TEST_SQL_SLOW = "SELECT SLEEP(?)";
 
     @Autowired
 //    @Qualifier("myHikariDataSource")
+//    @Qualifier("tomcatDataSource")
     private DataSource dataSource;
+//    @Autowired
+//    private DynamicRoutingDataSource dataSource;
 
     public String connectionDemo1(Integer id) {
         //getConnection() 方法从连接池中获取一个可用的数据库连接，该方法会首先检查连接池中的空闲连接，如果有则直接返回，若没有空闲连接且连接池未满则创建新连接，
@@ -39,6 +43,7 @@ public class HikariCPService {
         return result;
     }
 
+    @DS("hikari")
     public String connectionDemo2(Integer id) {
         //getConnection() 方法从连接池中获取一个可用的数据库连接，该方法会首先检查连接池中的空闲连接，如果有则直接返回，若没有空闲连接且连接池未满则创建新连接，
         // 若已满则根据 connectionTimeout 等待或抛出异常。

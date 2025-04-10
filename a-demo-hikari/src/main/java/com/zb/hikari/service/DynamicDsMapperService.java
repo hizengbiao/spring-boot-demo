@@ -1,5 +1,6 @@
 package com.zb.hikari.service;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.zb.hikari.entity.User;
 import com.zb.hikari.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService {
+@DS("druid")
+public class DynamicDsMapperService {
 
   @Autowired
   private UserMapper userMapper;

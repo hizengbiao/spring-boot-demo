@@ -38,6 +38,12 @@
       <groupId>com.baomidou</groupId>
       <artifactId>mybatis-plus-boot-starter</artifactId>
       <version>3.5.3</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>HikariCP</artifactId>
+          <groupId>com.zaxxer</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -58,25 +64,33 @@
       <artifactId>atp-client-api</artifactId>
       <version>1.0.4</version>
     </dependency>
+
+<!--    动态数据源-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+      <version>3.6.1</version>
+    </dependency>
+
     <dependency>
       <groupId>com.zaxxer</groupId>
       <artifactId>HikariCP</artifactId>
       <version>4.0.3</version>
     </dependency>
 
-<!--    &lt;!&ndash;  actuator相关  &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-actuator</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-security</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--    <groupId>org.jolokia</groupId>-->
-<!--    <artifactId>jolokia-core</artifactId>-->
-<!--  </dependency>-->
+    <!-- Druid -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+      <version>1.2.8</version>
+    </dependency>
+
+    <!-- Tomcat-JDBC -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jdbc</artifactId>
+      <version>9.0.50</version>
+    </dependency>
 
   </dependencies>
 

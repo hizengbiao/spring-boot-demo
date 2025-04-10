@@ -1,5 +1,6 @@
 package com.zb.hikari.service;
 
+import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zb.hikari.config.MyHikariConfig;
 import com.zb.hikari.utils.CommonUtils;
@@ -28,14 +29,10 @@ import java.util.Map;
 
 @Service
 @Slf4j
-public class HikariCPSysCallService {
+public class ManualDsService {
 
     @Autowired
     private MyHikariConfig myHikariConfig;
-
-    @Autowired
-//    @Qualifier("myHikariDataSource")
-    private DataSource dataSource;
 
     public String getNewConnection() {
         DataSource dataSource = new HikariDataSource();
@@ -54,7 +51,7 @@ public class HikariCPSysCallService {
         } catch (SQLException e) {
             log.error("数据库连接失败", e);
         }
-        CommonUtils.endOfCallSign();
+//        CommonUtils.endOfCallSign();
         return result;
     }
 
