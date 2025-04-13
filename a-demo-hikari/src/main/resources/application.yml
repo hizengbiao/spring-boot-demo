@@ -1,10 +1,14 @@
 
-zb.hikari.maximum-pool-size: 10
-zb.hikari.minimum-idle: 5
+zb.hikari.maximum-pool-size: 1
+zb.hikari.minimum-idle: 1
 zb.hikari.idle-timeout: 30000
 zb.hikari.connection-timeout: 5000
 zb.hikari.max-lifetime: 1800000
 zb.hikari.keepalive-time: 90000
+
+logging:
+  level:
+    root: debug
 
 server:
   port: 8086
@@ -21,7 +25,8 @@ spring:
 #    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   datasource:
     dynamic:
-      primary: tomcat #默认数据源
+      primary: hikari #默认数据源
+      strict: true
       datasource:
         tomcat: # Tomcat-JDBC 数据源配置
           type: org.apache.tomcat.jdbc.pool.DataSource
@@ -30,38 +35,41 @@ spring:
           username: ${zb.hikari.username}
           password: ${zb.hikari.password}
           driver-class-name: com.mysql.cj.jdbc.Driver
-          initial-size: 1
-          max-active: 5
-          min-idle: 1
-          max-idle: 3
-          test-on-borrow: true
-          validation-query: SELECT 1
+          tomcat:
+            initial-size: 1
+            max-active: 1
+            min-idle: 1
+            max-idle: 1
+            test-on-borrow: true
+            validation-query: SELECT 1
         hikari: # HikariCP 数据源配置
           type: com.zaxxer.hikari.HikariDataSource
           url: ${zb.hikari.jdbc-url}
           username: ${zb.hikari.username}
           password: ${zb.hikari.password}
           driver-class-name: com.mysql.cj.jdbc.Driver
-          pool-name: HikariPool
-          maximum-pool-size: 5
-          minimum-idle: 2
-          idle-timeout: 30000
-          connection-timeout: 30000
-          max-lifetime: 1800000
+          hikari:
+            pool-name: HikariPool
+            maximum-pool-size: 5
+            minimum-idle: 3
+            idle-timeout: 30000
+            connection-timeout: 30000
+            max-lifetime: 1800000
         druid: # Druid 数据源配置
           type: com.alibaba.druid.pool.DruidDataSource
           url: ${zb.hikari.jdbc-url}
           username: ${zb.hikari.username}
           password: ${zb.hikari.password}
           driver-class-name: com.mysql.cj.jdbc.Driver
-          initial-size: 1
-          max-active: 4
-          min-idle: 2
-          max-wait: 60000
-          validation-query: SELECT 1
-          test-on-borrow: true
-          test-while-idle: true
-          time-between-eviction-runs-millis: 60000
+          druid:
+            initial-size: 1
+            max-active: 2
+            min-idle: 1
+            max-wait: 60000
+            validation-query: SELECT 1
+            test-on-borrow: true
+            test-while-idle: true
+            time-between-eviction-runs-millis: 60000
 
 
 #
